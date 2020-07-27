@@ -1,69 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# All Of Your Work & Life by React
 
-## Available Scripts
+사람들은 살면서 일에 치여 살다보면, 자신에 집중하기 힘들어지기 마련입니다.
+의식하더라도 나의 목표를 잊게되고, 해야 할 일들이 구분이 잘 되지 않아 잊는 경우도 다반수고,
+올해의 목표도 또 작년과 재작년의 목표처럼 잊고 바쁘게 살아가며 흘러갈지도 모릅니다.
+그러다보면 작게는 할 일부터, 시간분배, 습관, 사람, 나 그리고 그것들이 모여 삶에대한 태도를 바꾸게됩니다.
 
-In the project directory, you can run:
+그렇게 **본인**의 **삶**을 관리할 수 있는, **나의 삶의 workspace**를 관리할 수 있는 서비스가 탄생합니다.
 
-### `yarn start`
+<img src = "./UI/example.jpg" width = 700px>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 기능
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# reactAllOfWorkLife
+1. 삶의 영역별로 메모를 관리
+    - Work : 일과 관련된 영역
+    - Life : 삶 및 일상과 관련된 영역
+    - Hobby : 취미와 관련된 영역
+    - Wish : 사고싶은 것, 자그마한 소망들과 관련된 영역
+    - Health : 건강관리를 위한 영역
+    - Habit : 상단바에 습관과 목표를 관리할 수 있는 영역
+2. 살면서 습관적으로 지켜야할 것 또는 목표 들을 보여주며 상기시키기
+    - Habit 영역에 기재해 둔 목표나 습관들이 30초마다 바뀝니다
+    - 명언을 넣어도 좋고, 허리를 펴라던지, 나를 위한 응원을 넣어도 좋습니다
