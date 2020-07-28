@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Habit from './components/Habit.jsx';
 import Navigation from './components/Navigation.jsx';
 import Memo from './components/Memo.jsx';
@@ -12,10 +11,6 @@ export default class App extends Component {
 				<Habit />
 				<Navigation />
 				<Memo />
-				{/* {memos.map((memo) => (
-          <Memo id={memo.id} text={memo.text} menu={memo.menu} />
-        ))} */}
-				{/* {todos.map(renderTodo)} */}
 				<Input />
 			</div>
 		);
