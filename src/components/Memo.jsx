@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 
 export default function Memo() {
-	const memos = JSON.parse(localStorage.getItem('memos') || []);
-	console.log(memos);
+	const [memos, setMemos] = useState(JSON.parse(localStorage.getItem('memos') || []));
+
+	// * 메모 추가하기
+	useEffect(() => {
+		setMemos(JSON.parse(localStorage.getItem('memos') || []));
+	}, [memos.length]);
 
 	function createMemoForm({ menu, text, id }) {
 		return (

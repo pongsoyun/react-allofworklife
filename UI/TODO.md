@@ -20,9 +20,9 @@
 
 -   UI : menu : Habit 영역 (상단)
 -   data : Read
--   [] 보여지게끔 구현
--   [] < > 버튼 작동
--   [] 일정 시간마다 다음습관 보여지게끔
+-   [x] 보여지게끔 구현
+-   [x] < > 버튼 작동
+-   [] 일정 시간마다 다음습관 보여지게끔 -> setInterval render 쌓여서 생기는 문제
 
 # Input.jsx
 
@@ -52,3 +52,18 @@
 
 -   [x] 메모 서비스의 Navigation Bar
 -   [] menu별로 Filtering
+
+<header class="habit">
+				<div class="habit__div">
+					<!-- 습관 부분  -->
+					<span class="habbit__text"></span>
+				</div>
+				<div class="habit__btn__container">
+					<button class="habit__prev__btn">
+						<i class="fa fa-chevron-left" aria-hidden="true"></i>
+					</button>
+					<button class="habit__next__btn">
+						<i class="fa fa-chevron-right" aria-hidden="true"></i>
+					</button>
+				</div>
+			</header>

@@ -16,9 +16,7 @@ export default function FilterMenu() {
 			<ul className="menus" onClick={(e) => handleClick(e.target.className)}>
 				<li className="nav__all">All</li>
 				<li className="nav__work">Work</li>
-				<li className="nav__life" value="life">
-					Life
-				</li>
+				<li className="nav__life">Life</li>
 				<li className="nav__hobby">Hobby</li>
 				<li className="nav__wish">Wish</li>
 				<li className="nav__health">Health</li>

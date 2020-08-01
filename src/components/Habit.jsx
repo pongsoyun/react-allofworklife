@@ -18,6 +18,12 @@ export default function Habit() {
 		habits = JSON.parse(localStorage.getItem('memos')).filter((memo) => memo.menu === 'habit');
 	}, [habits.length]);
 
+	// * just every 5seconds
+	// setInterval(() => {
+	// 	plusHabitIndex();
+	// 	// setHabit(habits[habitIndex]);
+	// }, 5000);
+
 	function minusHabitIndex() {
 		habitIndex === 0 ? setHabitIndex(0) : setHabitIndex(habitIndex - 1);
 	}
@@ -27,16 +33,16 @@ export default function Habit() {
 	}
 
 	return (
-		<header class="habit">
-			<div class="habit__div">
-				<span class="habbit__text">{habit}</span>
+		<header className="habit">
+			<div className="habit__div">
+				<span className="habbit__text">{habit}</span>
 			</div>
-			<div class="habit__btn__container">
-				<button class="habit__prev__btn" onClick={minusHabitIndex}>
-					<i class="fa fa-chevron-left" aria-hidden="true"></i>
+			<div className="habit__btn__container">
+				<button className="habit__prev__btn" onClick={minusHabitIndex}>
+					<i className="fa fa-chevron-left" aria-hidden="true"></i>
 				</button>
-				<button class="habit__next__btn" onClick={plusHabitIndex}>
-					<i class="fa fa-chevron-right" aria-hidden="true"></i>
+				<button className="habit__next__btn" onClick={plusHabitIndex}>
+					<i className="fa fa-chevron-right" aria-hidden="true"></i>
 				</button>
 			</div>
 		</header>
