@@ -23,13 +23,12 @@ export default function Input() {
 	function handleSubmit() {
 		const id = createUUID();
 		const db = JSON.parse(localStorage.getItem('memos'));
-		setText('');
 		localStorage.setItem('memos', JSON.stringify([...db, { menu, text, id }]));
-		// * input value = ''로 변경해주어야함, menu는 그대로 두고
+		setText('');
 	}
 
 	return (
-		<div className="input-container">
+		<form className="input-container" onSubmit={handleSubmit}>
 			<div className="input__menus" onClick={(e) => handleInputMenu(e.target.value)}>
 				<div>
 					<input type="radio" name="menu" id="work" value="work" defaultChecked />
@@ -58,14 +57,16 @@ export default function Input() {
 			</div>
 
 			<div className="input__memo">
+				{/* <input type="textarea" value={text} onChange={(e) => setText(e.target.value)} /> */}
 				<input type="textarea" value={text} onChange={(e) => setText(e.target.value)} />
 			</div>
 
 			<div class="input__memo__submit">
-				<button onClick={handleSubmit}>
-					<i class="fa fa-paper-plane input__memo__submit__btn" aria-hidden="true"></i>
-				</button>
+				{/* <input type="submit" value="추가" /> */}
+				<input type="submit" submit={handleSubmit}>
+					{/* <i class="fa fa-paper-plane input__memo__submit__btn" aria-hidden="true"></i> */}
+				</input>
 			</div>
-		</div>
+		</form>
 	);
 }

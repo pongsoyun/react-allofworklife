@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 export default function Memo() {
 	const [memos, setMemos] = useState(JSON.parse(localStorage.getItem('memos') || []));
+	console.log(memos);
 
 	// * 메모 추가하기
 	useEffect(() => {
-		setMemos(JSON.parse(localStorage.getItem('memos') || []));
+		console.log('바뀌어얗 정저앚서지다머나리ㅗㅓㅈㄷ모나');
+		// setMemos(JSON.parse(localStorage.getItem('memos') || []));
 	}, [memos.length]);
 
 	function createMemoForm({ menu, text, id }) {
