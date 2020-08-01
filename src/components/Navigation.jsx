@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-class Navigation extends Component {
-	render() {
-		return <div>navigation section</div>;
-	}
+export default function Navigation() {
+	return (
+		<div className="nav">
+			<Link to="/">Home</Link>
+			<Link to="/about">About</Link>
+		</div>
+	);
 }
-
-export default Navigation;
