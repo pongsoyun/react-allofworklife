@@ -28,37 +28,26 @@
 
 -   UI : Memo 입력 -> 등록
 -   data : Create
--   [] UI FORM
--   [] text 입력
--   [] menu 입력
--   [] UUID
--   [] localStorage 에 추가
+-   [x] UI FORM
+-   [x] text 입력
+-   [x] menu 입력
+-   [x] UUID
+-   [x] localStorage 에 추가
 
 # Memo.jsx
 
 -   UI : localStorage에 있는 데이터 fetch -> Memo Component 동적으로 생성해 뿌려주기
 -   data : Create(UI), Edit, Delete
 -   [x] localStorage에서 데이터 가져오기
--   [] 데이터 갱신시 처리 (state)
+-   [x] 데이터 갱신시 처리 (state)
 -   [x] 동적으로 Memo Component UI 생성 -> append
--   [] UI - delete 시에도 정상작동하는지 확인
+-   [x] UI - delete 시에도 정상작동하는지 확인
 -   [] UI - edit 시에도 정상작동하는지 확인
 -   [] text 수정
--   [] delete
--   [] 삭제시 localStorage
--   [] delete시 localStorage
+-   [x] delete
+-   [x] delete시 localStorage
 
 # FilterMenu.jsx
 
 -   [x] 메모 서비스의 Navigation Bar
 -   [] menu별로 Filtering
-
-<form class="search" onSubmit={handleSubmit}>
-      <input type="text" value={text} onChange={e => setText(e.target.value)} />
-      <input
-        type="text"
-        value={subject}
-        onChange={e => setSubject(e.target.value)}
-      />
-      <input type="submit" value="추가" />
-    </form>
