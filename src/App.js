@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import FilterMenu from './components/FilterMenu.jsx';
 import Habit from './components/Habit.jsx';
-import Navigation from './components/Navigation.jsx';
 import Memo from './components/Memo.jsx';
 import Input from './components/Input.jsx';
 
@@ -9,7 +9,7 @@ export default class App extends Component {
 		return (
 			<div className="App">
 				<Habit />
-				<Navigation />
+				<FilterMenu />
 				<Memo />
 				<Input />
 			</div>
