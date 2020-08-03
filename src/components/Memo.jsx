@@ -6,7 +6,6 @@ export default function Memo() {
 
 	// * 메모 추가하기
 	useEffect(() => {
-		console.log('바뀌어얗 정저앚서지다머나리ㅗㅓㅈㄷ모나');
 		// setMemos(JSON.parse(localStorage.getItem('memos') || []));
 	}, [memos.length]);
 
@@ -17,10 +16,22 @@ export default function Memo() {
 		// setTodos(prev => [...prev.slice(0, index), ...prev.slice(index + 1)]);
 	}
 
+	function editMemo(memo) {
+		console.log(memo.target);
+		// console.log(memo.menu);
+		const text = memo.target.innerText;
+		const menu = memo.target.menu;
+		const id = memo.target.id;
+
+		// deleteMemo(id);
+		console.log(`text : ${text}, menu: ${menu} , id : ${id}`);
+		// * input 태그에 넣어줘야하는데..
+	}
+
 	function createMemoForm({ menu, text, id }) {
 		return (
 			<li className="memo">
-				<div className="memo__text" id={id}>
+				<div className="memo__text" id={id} menu={menu} onClick={(e) => editMemo(e)}>
 					{text}
 				</div>
 				<div className="memo__info">
