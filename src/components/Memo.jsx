@@ -1,33 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-export default function Memo() {
-	const [memos, setMemos] = useState(JSON.parse(localStorage.getItem('memos') || []));
-	console.log(memos);
-
-	// * 메모 추가하기
-	useEffect(() => {
-		// setMemos(JSON.parse(localStorage.getItem('memos') || []));
-	}, [memos.length]);
-
-	function deleteMemo(deleteID) {
-		const newMemos = memos.filter((memo) => memo.id !== deleteID);
-		localStorage.setItem('memos', JSON.stringify(newMemos));
-		setMemos(newMemos);
-		// setTodos(prev => [...prev.slice(0, index), ...prev.slice(index + 1)]);
-	}
-
-	function editMemo(memo) {
-		console.log(memo.target);
-		// console.log(memo.menu);
-		const text = memo.target.innerText;
-		const menu = memo.target.menu;
-		const id = memo.target.id;
-
-		// deleteMemo(id);
-		console.log(`text : ${text}, menu: ${menu} , id : ${id}`);
-		// * input 태그에 넣어줘야하는데..
-	}
-
+export default function Memo({ memos, deleteMemo, editMemo }) {
 	function createMemoForm({ menu, text, id }) {
 		return (
 			<li className="memo">
