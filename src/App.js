@@ -51,12 +51,51 @@ export default function App() {
 		// * input 태그에 넣어줘야하는데..
 	};
 
+	// ! Input
+	const [menu, setMenu] = useState('work');
+	const [text, setText] = useState('');
+	// const [isInputText, setInputText] = useState('');
+
+	const createUUID = () => {
+		return '_' + Math.random().toString(36).substr(2, 9);
+	};
+
+	useEffect(() => {
+		// * iput 폼에서도 변경하는 모습 보여줘야됨
+	}, [text]);
+
+	const handleInputMenu = (menuVal) => {
+		// console.log(menuVal);
+		if (menuVal !== undefined) setMenu(menuVal);
+	};
+
+	const changeInputText = (changeText) => {
+		setText(changeText);
+	};
+
+	useEffect(() => {
+		console.log(menu);
+	}, [menu]);
+
+	const handleSubmit = () => {
+		const id = createUUID();
+		const db = JSON.parse(localStorage.getItem('memos'));
+		localStorage.setItem('memos', JSON.stringify([...db, { menu, text, id }]));
+		setText('');
+	};
+
 	return (
 		<div className="App">
 			<Habit habits={habits} />
 			<FilterMenu />
 			<Memo memos={memos} deleteMemo={deleteMemo} editMemo={editMemo} />
-			<Input />
+			<Input
+				text={text}
+				menu={menu}
+				handleSubmit={handleSubmit}
+				handleInputMenu={handleInputMenu}
+				changeInputText={changeInputText}
+			/>
 		</div>
 	);
 }
