@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Habit() {
-	let habits = JSON.parse(localStorage.getItem('memos')).filter((memo) => memo.menu === 'habit');
-
+export default function Habit({ habits }) {
 	const [habit, setHabit] = useState(habits.length === 0 ? '이곳에 습관 텍스트가 나옵니다.' : habits[0].text);
 	const [habitIndex, setHabitIndex] = useState(0);
 
 	useEffect(() => {
+		console.log(habits);
+
 		if (habitIndex < 0) setHabitIndex(habits.length - 1);
 		window.setTimeout(() => plusHabitIndex, 1000);
 
@@ -18,11 +18,6 @@ export default function Habit() {
 		}, 5000);
 		return () => clearTimeout(timer);
 	}, [habitIndex]);
-
-	// * habit 추가/삭제되었을 떄 Update
-	useEffect(() => {
-		habits = JSON.parse(localStorage.getItem('memos')).filter((memo) => memo.menu === 'habit');
-	}, [habits.length]);
 
 	function minusHabitIndex() {
 		habitIndex === 0 ? setHabitIndex(habits.length - 1) : setHabitIndex(habitIndex - 1);
