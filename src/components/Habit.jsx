@@ -3,14 +3,20 @@ import React, { useState, useEffect } from 'react';
 export default function Habit() {
 	let habits = JSON.parse(localStorage.getItem('memos')).filter((memo) => memo.menu === 'habit');
 
-	const [habit, setHabit] = useState(habits[0].text || '이곳에 습관 텍스트가 나옵니다.');
+	const [habit, setHabit] = useState(habits.length === 0 ? '이곳에 습관 텍스트가 나옵니다.' : habits[0].text);
 	const [habitIndex, setHabitIndex] = useState(0);
 
 	useEffect(() => {
-		// * 5s마다 habit index++ /// habits[index % habits.length]
-		if (habitIndex < 0) setHabitIndex(0);
+		if (habitIndex < 0) setHabitIndex(habits.length - 1);
+		window.setTimeout(() => plusHabitIndex, 1000);
 
-		console.log(`habitIndex: ${habitIndex}`);
+		if (habits.length !== 0) setHabit(habits[habitIndex].text);
+
+		// * react Hooks에서 setInterval처럼 기능하게끔 하기
+		const timer = setTimeout(() => {
+			plusHabitIndex();
+		}, 5000);
+		return () => clearTimeout(timer);
 	}, [habitIndex]);
 
 	// * habit 추가/삭제되었을 떄 Update
@@ -18,14 +24,8 @@ export default function Habit() {
 		habits = JSON.parse(localStorage.getItem('memos')).filter((memo) => memo.menu === 'habit');
 	}, [habits.length]);
 
-	// * just every 5seconds
-	// setInterval(() => {
-	// 	plusHabitIndex();
-	// 	// setHabit(habits[habitIndex]);
-	// }, 5000);
-
 	function minusHabitIndex() {
-		habitIndex === 0 ? setHabitIndex(0) : setHabitIndex(habitIndex - 1);
+		habitIndex === 0 ? setHabitIndex(habits.length - 1) : setHabitIndex(habitIndex - 1);
 	}
 
 	function plusHabitIndex() {
