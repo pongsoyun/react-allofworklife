@@ -40,15 +40,15 @@ export default function App() {
 
 	// * editMemo
 	const editMemo = (memo) => {
-		console.log(memo.target);
 		// console.log(memo.menu);
+
 		const text = memo.target.innerText;
 		const menu = memo.target.menu;
 		const id = memo.target.id;
 
-		// deleteMemo(id);
-		console.log(`text : ${text}, menu: ${menu} , id : ${id}`);
-		// * input 태그에 넣어줘야하는데..
+		deleteMemo(id);
+		// console.log(`text : ${text}, menu: ${menu} , id : ${id}`);
+		setText(text);
 	};
 
 	// ! Input
