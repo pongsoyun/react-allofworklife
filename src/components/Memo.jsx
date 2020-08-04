@@ -4,7 +4,7 @@ export default function Memo({ filter, memos, deleteMemo, editMemo }) {
 	function createMemoForm({ menu, text, id }) {
 		return (
 			<li className="memo">
-				<div className="memo__text" id={id} menu={menu} onClick={(e) => editMemo(e)}>
+				<div className="memo__text" id={id} onClick={(e) => editMemo(e.target, menu)}>
 					{text}
 				</div>
 				<div className="memo__info">

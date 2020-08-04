@@ -39,15 +39,15 @@ export default function App() {
 	};
 
 	// * editMemo
-	const editMemo = (memo) => {
-		// console.log(memo.menu);
-
-		const text = memo.target.innerText;
-		const menu = memo.target.menu;
-		const id = memo.target.id;
+	const editMemo = (memo, menu) => {
+		const text = memo.innerText;
+		const id = memo.id;
 
 		deleteMemo(id);
 		setText(text);
+		console.log(`${menu}     ${text}\t${id}`);
+		// handleInputMenu(menu);
+		// * radio checked 바꿔야함
 	};
 
 	// ! Input
