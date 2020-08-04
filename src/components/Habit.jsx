@@ -5,8 +5,6 @@ export default function Habit({ habits }) {
 	const [habitIndex, setHabitIndex] = useState(0);
 
 	useEffect(() => {
-		console.log(habits);
-
 		if (habitIndex < 0) setHabitIndex(habits.length - 1);
 		window.setTimeout(() => plusHabitIndex, 1000);
 

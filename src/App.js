@@ -27,7 +27,7 @@ export default function App() {
 	// * 메모 추가되었을 경우
 	useEffect(() => {
 		// setMemos(JSON.parse(localStorage.getItem('memos') || []));
-		console.log(memos.length);
+		// console.log(memos.length);
 	}, [memos.length]);
 
 	// * deleteMemo
@@ -47,25 +47,22 @@ export default function App() {
 		const id = memo.target.id;
 
 		deleteMemo(id);
-		// console.log(`text : ${text}, menu: ${menu} , id : ${id}`);
 		setText(text);
 	};
 
 	// ! Input
 	const [menu, setMenu] = useState('work');
 	const [text, setText] = useState('');
-	// const [isInputText, setInputText] = useState('');
 
 	const createUUID = () => {
 		return '_' + Math.random().toString(36).substr(2, 9);
 	};
 
 	useEffect(() => {
-		// * iput 폼에서도 변경하는 모습 보여줘야됨
+		// * input form 에서도 변경되는 모습
 	}, [text]);
 
 	const handleInputMenu = (menuVal) => {
-		// console.log(menuVal);
 		if (menuVal !== undefined) setMenu(menuVal);
 	};
 
@@ -74,7 +71,7 @@ export default function App() {
 	};
 
 	useEffect(() => {
-		console.log(menu);
+		// console.log(menu);
 	}, [menu]);
 
 	const handleSubmit = () => {
@@ -84,11 +81,21 @@ export default function App() {
 		setText('');
 	};
 
+	const [filterMenu, setFilterMenu] = useState('all');
+
+	useEffect(() => {
+		// console.log(filterMenu);
+	}, [filterMenu]);
+
+	const handleFilterMenu = (selectedMenu) => {
+		setFilterMenu(selectedMenu);
+	};
+
 	return (
 		<div className="App">
 			<Habit habits={habits} />
-			<FilterMenu />
-			<Memo memos={memos} deleteMemo={deleteMemo} editMemo={editMemo} />
+			<FilterMenu handleFilterMenu={handleFilterMenu} />
+			<Memo filter={filterMenu} memos={memos} deleteMemo={deleteMemo} editMemo={editMemo} />
 			<Input
 				text={text}
 				menu={menu}

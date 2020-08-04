@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Memo({ memos, deleteMemo, editMemo }) {
+export default function Memo({ filter, memos, deleteMemo, editMemo }) {
 	function createMemoForm({ menu, text, id }) {
 		return (
 			<li className="memo">
@@ -21,5 +21,7 @@ export default function Memo({ memos, deleteMemo, editMemo }) {
 		);
 	}
 
-	return memos.map((memo) => createMemoForm(memo));
+	return memos.map((memo) => {
+		if (memo.menu === filter || filter === 'all') return createMemoForm(memo);
+	});
 }
