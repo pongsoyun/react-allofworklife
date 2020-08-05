@@ -1,0 +1,231 @@
+/* 전체 레이아웃 */
+body {
+	background-color: #efdde0;
+	font-size: 20px;
+	color: grey;
+	text-align: center;
+	font-weight: 300;
+}
+
+.page {
+	margin: 30px auto;
+	width: 1200px;
+	border-radius: 10px;
+	background-color: whitesmoke;
+}
+
+.header {
+	margin: 10px 40px;
+}
+
+.section {
+	margin: 10px 40px;
+}
+
+.footer {
+	margin: 10px 40px;
+}
+
+ul {
+	list-style: none;
+}
+
+/* section */
+
+.memo {
+	padding: 15px 15px;
+	margin: 10px 10px;
+	background-color: antiquewhite;
+	border-radius: 10px;
+	width: 470px;
+	height: auto;
+	display: inline-block;
+}
+
+/* bin */
+.memo__info {
+	display: flex;
+}
+.memo__menu {
+	font-size: 16px;
+	flex: 1;
+	text-align: right;
+	margin-top: 20px;
+	margin-right: 10px;
+}
+
+.memo__delete__btn {
+	color: grey;
+	flex: none;
+	float: right;
+	margin-top: 20px;
+	transition: all 300ms ease-in;
+	cursor: pointer;
+}
+
+.memo__delete__btn:hover {
+	color: rosybrown;
+	transform: scale(1.1);
+}
+
+.memos__container {
+	height: 600px;
+	overflow-y: auto;
+}
+
+/* header */
+
+.menus {
+	display: flex;
+	flex-direction: row;
+}
+
+.menus li {
+	margin: auto;
+	transition: all 300ms ease-in;
+}
+
+.menus li:hover {
+	/* font-weight: 400; */
+	/* color: rosybrown; */
+	transform: scale(1.1);
+	color: white;
+	background-color: rgba(189, 143, 142, 0.6);
+}
+
+.habit {
+	display: flex;
+	flex-direction: row;
+}
+
+.habit__btn__container {
+	margin: 20px 40px;
+	margin-left: auto;
+}
+
+.habit__div {
+	margin: 20px 40px;
+	flex: none;
+}
+
+.habit__div span {
+	float: left;
+	height: 100%;
+}
+
+/* footer */
+
+.input__menus {
+	display: flex;
+	flex-direction: row;
+}
+
+.input__menus div {
+	margin: auto;
+}
+
+input[type='radio'] {
+	cursor: pointer;
+}
+
+label {
+	cursor: pointer;
+	transition: all 300ms ease-in;
+}
+
+label:hover {
+	background-color: rgba(189, 143, 142, 0.6);
+	color: white;
+}
+
+.input__container {
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+}
+
+.input__memos__form {
+	display: inline-block;
+	flex: 11;
+}
+
+.input__memo__submit {
+	display: inline-block;
+	flex: 2;
+	margin: auto 0;
+	/* vertical-align: middle; */
+}
+
+.input__memo__submit > button:focus {
+	outline: none;
+}
+
+.input__memo__text {
+	resize: none;
+	display: inline-block;
+	margin: 10px 40px;
+	width: 950px;
+	height: 100px;
+}
+
+.input__memo__submit button {
+	width: 70px;
+	height: 70px;
+}
+
+button {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.input__memo__submit__btn {
+	color: grey;
+	font-size: 30px;
+	transition: all 300ms ease-in;
+}
+
+.input__memo__submit__btn:hover {
+	color: rosybrown;
+	transform: scale(1.1);
+}
+
+.habit__prev__btn:focus {
+	outline: none;
+}
+
+.habit__prev__btn > i {
+	color: grey;
+	font-size: 16px;
+	transition: all 300ms ease-in;
+}
+
+.habit__next__btn > i {
+	color: grey;
+	font-size: 16px;
+	transition: all 300ms ease-in;
+}
+
+.habit__prev__btn > i:hover {
+	color: rosybrown;
+	transform: scale(1.1);
+}
+
+.habit__next__btn > i:hover {
+	color: rosybrown;
+	transform: scale(1.1);
+}
+
+.habit__next__btn:focus {
+	outline: none;
+}
+
+textarea {
+	border: none;
+	border-radius: 10px;
+	background-color: rgba(189, 143, 142, 0.6);
+	padding: 10px 10px;
+	font-weight: 300;
+	font-size: 20px;
+	color: white;
+}
