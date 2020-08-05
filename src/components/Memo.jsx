@@ -21,7 +21,11 @@ export default function Memo({ filter, memos, deleteMemo, editMemo }) {
 		);
 	}
 
-	return memos.map((memo) => {
-		if (memo.menu === filter || filter === 'all') return createMemoForm(memo);
-	});
+	return (
+		<main class="memos__container">
+			{memos.map((memo) => {
+				if (memo.menu === filter || filter === 'all') return createMemoForm(memo);
+			})}
+		</main>
+	);
 }

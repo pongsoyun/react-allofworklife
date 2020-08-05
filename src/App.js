@@ -3,6 +3,7 @@ import FilterMenu from './components/FilterMenu.jsx';
 import Habit from './components/Habit.jsx';
 import Memo from './components/Memo.jsx';
 import Input from './components/Input.jsx';
+import './App.css';
 
 export default function App() {
 	const [memos, setMemos] = useState(JSON.parse(localStorage.getItem('memos') || []));
@@ -10,6 +11,7 @@ export default function App() {
 	const [habits, setHabits] = useState(
 		JSON.parse(localStorage.getItem('memos')).filter((memo) => memo.menu === 'habit')
 	);
+	const [filterMenu, setFilterMenu] = useState('all');
 
 	// ! * componentDidMount
 	useEffect(() => {
@@ -25,10 +27,7 @@ export default function App() {
 	// ! * Memo
 	// * memos.length 바뀌면 달리 보여줘야됨
 	// * 메모 추가되었을 경우
-	useEffect(() => {
-		// setMemos(JSON.parse(localStorage.getItem('memos') || []));
-		// console.log(memos.length);
-	}, [memos.length]);
+	useEffect(() => {}, [memos.length]);
 
 	// * deleteMemo
 	const deleteMemo = (deleteID) => {
@@ -63,28 +62,35 @@ export default function App() {
 	}, [text]);
 
 	const handleInputMenu = (menuVal) => {
-		if (menuVal !== undefined) setMenu(menuVal);
+		// for (let radioMenu of menus) {
+		// 	if (radioMenu.id === menu) radioMenu.checked = true;
+		// }
+		if (menuVal !== undefined) {
+			console.log(`바껴야돼 메뉴 ㅠㅠㅠㅠ ${menuVal}로 ... `);
+			setMenu(menuVal);
+		}
 	};
 
 	const changeInputText = (changeText) => {
 		setText(changeText);
 	};
 
-	useEffect(() => {
-		// console.log(menu);
-	}, [menu]);
+	useEffect(() => {}, [menu]);
 
 	const handleSubmit = () => {
-		const id = createUUID();
-		const db = JSON.parse(localStorage.getItem('memos'));
-		localStorage.setItem('memos', JSON.stringify([...db, { menu, text, id }]));
-		setText('');
+		if (text !== '') {
+			const id = createUUID();
+			const db = JSON.parse(localStorage.getItem('memos'));
+			localStorage.setItem('memos', JSON.stringify([...db, { menu, text, id }]));
+			setText('');
+			setMemos([...memos, { menu, text, id }]);
+			setMenu(menu);
+			setFilterMenu(filterMenu);
+		}
 	};
 
-	const [filterMenu, setFilterMenu] = useState('all');
-
 	useEffect(() => {
-		// console.log(filterMenu);
+		console.log(`filterMenu: ${filterMenu}`);
 	}, [filterMenu]);
 
 	const handleFilterMenu = (selectedMenu) => {
@@ -93,16 +99,18 @@ export default function App() {
 
 	return (
 		<div className="App">
-			<Habit habits={habits} />
-			<FilterMenu handleFilterMenu={handleFilterMenu} />
-			<Memo filter={filterMenu} memos={memos} deleteMemo={deleteMemo} editMemo={editMemo} />
-			<Input
-				text={text}
-				menu={menu}
-				handleSubmit={handleSubmit}
-				handleInputMenu={handleInputMenu}
-				changeInputText={changeInputText}
-			/>
+			<div className="page">
+				<Habit habits={habits} />
+				<FilterMenu handleFilterMenu={handleFilterMenu} />
+				<Memo filter={filterMenu} memos={memos} deleteMemo={deleteMemo} editMemo={editMemo} />
+				<Input
+					text={text}
+					menu={menu}
+					handleSubmit={handleSubmit}
+					handleInputMenu={handleInputMenu}
+					changeInputText={changeInputText}
+				/>
+			</div>
 		</div>
 	);
 }
