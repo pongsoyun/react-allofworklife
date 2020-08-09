@@ -44,6 +44,7 @@ export default function App() {
 
 		deleteMemo(id);
 		setText(text);
+		setMenu(menu);
 		console.log(`${menu}     ${text}\t${id}`);
 		// handleInputMenu(menu);
 		// * radio checked 바꿔야함
@@ -62,11 +63,7 @@ export default function App() {
 	}, [text]);
 
 	const handleInputMenu = (menuVal) => {
-		// for (let radioMenu of menus) {
-		// 	if (radioMenu.id === menu) radioMenu.checked = true;
-		// }
 		if (menuVal !== undefined) {
-			console.log(`바껴야돼 메뉴 ㅠㅠㅠㅠ ${menuVal}로 ... `);
 			setMenu(menuVal);
 		}
 	};
