@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-allofworklife/static/css/main.7d3aaf27.chunk.css",
-    "main.js": "/react-allofworklife/static/js/main.f671eed5.chunk.js",
-    "main.js.map": "/react-allofworklife/static/js/main.f671eed5.chunk.js.map",
+    "main.js": "/react-allofworklife/static/js/main.791271a3.chunk.js",
+    "main.js.map": "/react-allofworklife/static/js/main.791271a3.chunk.js.map",
     "runtime-main.js": "/react-allofworklife/static/js/runtime-main.88538368.js",
     "runtime-main.js.map": "/react-allofworklife/static/js/runtime-main.88538368.js.map",
     "static/js/2.7c29d0af.chunk.js": "/react-allofworklife/static/js/2.7c29d0af.chunk.js",
     "static/js/2.7c29d0af.chunk.js.map": "/react-allofworklife/static/js/2.7c29d0af.chunk.js.map",
     "index.html": "/react-allofworklife/index.html",
-    "precache-manifest.f17f061b77c8ccb04aa773f9132f47e5.js": "/react-allofworklife/precache-manifest.f17f061b77c8ccb04aa773f9132f47e5.js",
+    "precache-manifest.6681ec26d44b58d74c7dc6434c126dab.js": "/react-allofworklife/precache-manifest.6681ec26d44b58d74c7dc6434c126dab.js",
     "service-worker.js": "/react-allofworklife/service-worker.js",
     "static/css/main.7d3aaf27.chunk.css.map": "/react-allofworklife/static/css/main.7d3aaf27.chunk.css.map",
     "static/js/2.7c29d0af.chunk.js.LICENSE.txt": "/react-allofworklife/static/js/2.7c29d0af.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.88538368.js",
     "static/js/2.7c29d0af.chunk.js",
     "static/css/main.7d3aaf27.chunk.css",
-    "static/js/main.f671eed5.chunk.js"
+    "static/js/main.791271a3.chunk.js"
   ]
 }
