@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import FilterMenu from "./components/FilterMenu.jsx";
 import Habit from "./components/Habit.jsx";
 import Memo from "./components/Memo.jsx";
@@ -17,11 +17,12 @@ export default function App() {
     "Health",
     "Habit",
   ]);
-  const [habits, setHabits] = useState(
-    JSON.parse(localStorage.getItem("memos")).filter(
-      (memo) => memo.menu === "habit"
-    )
+
+  const getHabits = useCallback(
+    () => memos.filter(({ menu }) => menu === "habit"),
+    [memos]
   );
+
   const [filterMenu, setFilterMenu] = useState("all");
 
   // ! * componentDidMount
@@ -29,15 +30,6 @@ export default function App() {
     // setMemos(JSON.parse(localStorage.getItem('memos')));
     // setHabits(memos.filter((memo) => memo.menu === 'habit'));
   }, []);
-
-  // ! * Habit - habit 추가/삭제되었을 떄 Update
-  useEffect(() => {
-    setHabits(
-      JSON.parse(localStorage.getItem("memos")).filter(
-        (memo) => memo.menu === "habit"
-      )
-    );
-  }, [habits.length]);
 
   // ! * Memo
   // * memos.length 바뀌면 달리 보여줘야됨
@@ -105,7 +97,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="page">
-        <Habit habits={habits} />
+        <Habit habits={getHabits()} />
         <FilterMenu handleFilterMenu={handleFilterMenu} />
         <Memo
           filter={filterMenu}
