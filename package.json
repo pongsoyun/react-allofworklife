@@ -2,7 +2,7 @@
 	"name": "work-life",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://pongsoyun.github.io/react_allofworklife/",
+	"homepage": "https://pongsoyun.github.io/react-allofworklife/",
 	"dependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
@@ -13,7 +13,7 @@
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-router-dom": "^5.2.0",
-		"react-scripts": "3.4.1",
+		"react-scripts": "^3.4.3",
 		"sass-loader": "^9.0.2",
 		"style-loader": "^1.2.1",
 		"typescript": "^3.9.7"
