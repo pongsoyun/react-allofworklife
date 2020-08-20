@@ -38,22 +38,9 @@ export default function App() {
 
   const [filterMenu, setFilterMenu] = useState(ALL_MENU);
 
-  // ! * componentDidMount
-  useEffect(() => {
-    // setMemos(JSON.parse(localStorage.getItem('memos')));
-    // setHabits(memos.filter((memo) => memo.menu === 'habit'));
-  }, []);
-
-  // ! * Memo
-  // * memos.length 바뀌면 달리 보여줘야됨
-  // * 메모 추가되었을 경우
-  useEffect(() => {}, [memos.length]);
-
   // * deleteMemo
   const deleteMemo = (deleteID) => {
-    const newMemos = memos.filter((memo) => memo.id !== deleteID);
-    setMemos(newMemos);
-    // setTodos(prev => [...prev.slice(0, index), ...prev.slice(index + 1)]);
+    setMemos((prevMemos) => prevMemos.filter((memo) => memo.id !== deleteID));
   };
 
   // * editMemo
@@ -73,10 +60,6 @@ export default function App() {
   const [menu, setMenu] = useState(WORK_MENU);
   const [text, setText] = useState("");
 
-  useEffect(() => {
-    // * input form 에서도 변경되는 모습
-  }, [text]);
-
   const handleInputMenu = (menuVal) => {
     if (menuVal !== undefined) {
       setMenu(menuVal);
@@ -87,21 +70,13 @@ export default function App() {
     setText(changeText);
   };
 
-  useEffect(() => {}, [menu]);
-
   const handleSubmit = () => {
     if (text !== "") {
       const id = createUUID();
-      setText("");
       setMemos((prevMemos) => [...prevMemos, { menu, text, id }]);
-      setMenu(menu);
-      setFilterMenu(filterMenu);
+      setText("");
     }
   };
-
-  useEffect(() => {
-    console.log(`filterMenu: ${filterMenu}`);
-  }, [filterMenu]);
 
   const handleFilterMenu = (selectedMenu) => {
     setFilterMenu(selectedMenu);
