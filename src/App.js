@@ -5,25 +5,38 @@ import Memo from "./components/Memo.jsx";
 import Input from "./components/Input.jsx";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { createUUID } from "./utils/createUUID";
+import {
+  MEMOS_KEY,
+  WORK_MENU,
+  LIFE_MENU,
+  HOBBY_MENU,
+  WISH_MENU,
+  HEALTH_MENU,
+  HABIT_MENU,
+  ALL_MENU,
+} from "./constants/menus";
 import "./App.css";
 
 export default function App() {
-  const [memos, setMemos] = useLocalStorage({ key: "memos", defaultState: [] });
-  const [menus, setMenus] = useState([
-    "Work",
-    "Life",
-    "Hobby",
-    "Wish",
-    "Health",
-    "Habit",
-  ]);
+  const [memos, setMemos] = useLocalStorage({
+    key: MEMOS_KEY,
+    defaultState: [],
+  });
+  const MENUS = [
+    WORK_MENU,
+    LIFE_MENU,
+    HOBBY_MENU,
+    WISH_MENU,
+    HEALTH_MENU,
+    HABIT_MENU,
+  ];
 
   const getHabits = useCallback(
-    () => memos.filter(({ menu }) => menu === "habit"),
+    () => memos.filter(({ menu }) => menu === HABIT_MENU),
     [memos]
   );
 
-  const [filterMenu, setFilterMenu] = useState("all");
+  const [filterMenu, setFilterMenu] = useState(ALL_MENU);
 
   // ! * componentDidMount
   useEffect(() => {
@@ -57,7 +70,7 @@ export default function App() {
   };
 
   // ! Input
-  const [menu, setMenu] = useState("work");
+  const [menu, setMenu] = useState(WORK_MENU);
   const [text, setText] = useState("");
 
   useEffect(() => {
