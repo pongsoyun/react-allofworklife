@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b46a163022cb38dca23513441c38ade5",
+    "revision": "6b03da2f824dc3634a36d1b5b3b0818f",
     "url": "/react-allofworklife/index.html"
   },
   {
-    "revision": "9d686d140fcd52545fc0",
+    "revision": "2fd685a8bed0d8670de3",
     "url": "/react-allofworklife/static/css/main.7d3aaf27.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-allofworklife/static/js/2.7c29d0af.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9d686d140fcd52545fc0",
-    "url": "/react-allofworklife/static/js/main.f671eed5.chunk.js"
+    "revision": "2fd685a8bed0d8670de3",
+    "url": "/react-allofworklife/static/js/main.aa521f1e.chunk.js"
   },
   {
     "revision": "5b3e8567cbbdf9e9aed5",
