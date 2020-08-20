@@ -4,10 +4,11 @@ import Habit from "./components/Habit.jsx";
 import Memo from "./components/Memo.jsx";
 import Input from "./components/Input.jsx";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { createUUID } from "./utils/createUUID";
 import "./App.css";
 
 export default function App() {
-  const [memos, setMemos] = useLocalStorage("memos");
+  const [memos, setMemos] = useLocalStorage({ key: "memos", defaultState: [] });
   const [menus, setMenus] = useState([
     "Work",
     "Life",
@@ -66,10 +67,6 @@ export default function App() {
   // ! Input
   const [menu, setMenu] = useState("work");
   const [text, setText] = useState("");
-
-  const createUUID = () => {
-    return "_" + Math.random().toString(36).substr(2, 9);
-  };
 
   useEffect(() => {
     // * input form 에서도 변경되는 모습
