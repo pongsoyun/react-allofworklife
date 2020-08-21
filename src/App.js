@@ -1,113 +1,106 @@
-import React, { useState, useEffect } from 'react';
-import FilterMenu from './components/FilterMenu.jsx';
-import Habit from './components/Habit.jsx';
-import Memo from './components/Memo.jsx';
-import Input from './components/Input.jsx';
-import './App.css';
+import React, { useState, useEffect, useCallback } from "react";
+import FilterMenu from "./components/FilterMenu.jsx";
+import Habit from "./components/Habit.jsx";
+import Memo from "./components/Memo.jsx";
+import Input from "./components/Input.jsx";
+import { useLocalStorage } from "./hooks/useLocalStorage";
+import { createUUID } from "./utils/createUUID";
+import {
+  MEMOS_KEY,
+  WORK_MENU,
+  LIFE_MENU,
+  HOBBY_MENU,
+  WISH_MENU,
+  HEALTH_MENU,
+  HABIT_MENU,
+  ALL_MENU,
+} from "./constants/menus";
+import "./App.css";
 
 export default function App() {
-	const [memos, setMemos] = useState(JSON.parse(localStorage.getItem('memos') || []));
-	const [menus, setMenus] = useState(['Work', 'Life', 'Hobby', 'Wish', 'Health', 'Habit']);
-	const [habits, setHabits] = useState(
-		JSON.parse(localStorage.getItem('memos')).filter((memo) => memo.menu === 'habit')
-	);
-	const [filterMenu, setFilterMenu] = useState('all');
+  const [memos, setMemos] = useLocalStorage({
+    key: MEMOS_KEY,
+    defaultState: [],
+  });
+  const MENUS = [
+    WORK_MENU,
+    LIFE_MENU,
+    HOBBY_MENU,
+    WISH_MENU,
+    HEALTH_MENU,
+    HABIT_MENU,
+  ];
 
-	// ! * componentDidMount
-	useEffect(() => {
-		// setMemos(JSON.parse(localStorage.getItem('memos')));
-		// setHabits(memos.filter((memo) => memo.menu === 'habit'));
-	}, []);
+  const getHabits = useCallback(
+    () => memos.filter(({ menu }) => menu === HABIT_MENU),
+    [memos]
+  );
 
-	// ! * Habit - habit 추가/삭제되었을 떄 Update
-	useEffect(() => {
-		setHabits(JSON.parse(localStorage.getItem('memos')).filter((memo) => memo.menu === 'habit'));
-	}, [habits.length]);
+  const [filterMenu, setFilterMenu] = useState(ALL_MENU);
 
-	// ! * Memo
-	// * memos.length 바뀌면 달리 보여줘야됨
-	// * 메모 추가되었을 경우
-	useEffect(() => {}, [memos.length]);
+  // * deleteMemo
+  const deleteMemo = (deleteID) => {
+    setMemos((prevMemos) => prevMemos.filter((memo) => memo.id !== deleteID));
+  };
 
-	// * deleteMemo
-	const deleteMemo = (deleteID) => {
-		const newMemos = memos.filter((memo) => memo.id !== deleteID);
-		localStorage.setItem('memos', JSON.stringify(newMemos));
-		setMemos(newMemos);
-		// setTodos(prev => [...prev.slice(0, index), ...prev.slice(index + 1)]);
-	};
+  // * editMemo
+  const editMemo = (memo, menu) => {
+    const text = memo.innerText;
+    const id = memo.id;
 
-	// * editMemo
-	const editMemo = (memo, menu) => {
-		const text = memo.innerText;
-		const id = memo.id;
+    deleteMemo(id);
+    setText(text);
+    setMenu(menu);
+    console.log(`${menu}     ${text}\t${id}`);
+    // handleInputMenu(menu);
+    // * radio checked 바꿔야함
+  };
 
-		deleteMemo(id);
-		setText(text);
-		setMenu(menu);
-		console.log(`${menu}     ${text}\t${id}`);
-		// handleInputMenu(menu);
-		// * radio checked 바꿔야함
-	};
+  // ! Input
+  const [menu, setMenu] = useState(WORK_MENU);
+  const [text, setText] = useState("");
 
-	// ! Input
-	const [menu, setMenu] = useState('work');
-	const [text, setText] = useState('');
+  const handleInputMenu = (menuVal) => {
+    if (menuVal !== undefined) {
+      setMenu(menuVal);
+    }
+  };
 
-	const createUUID = () => {
-		return '_' + Math.random().toString(36).substr(2, 9);
-	};
+  const changeInputText = (changeText) => {
+    setText(changeText);
+  };
 
-	useEffect(() => {
-		// * input form 에서도 변경되는 모습
-	}, [text]);
+  const handleSubmit = () => {
+    if (text !== "") {
+      const id = createUUID();
+      setMemos((prevMemos) => [...prevMemos, { menu, text, id }]);
+      setText("");
+    }
+  };
 
-	const handleInputMenu = (menuVal) => {
-		if (menuVal !== undefined) {
-			setMenu(menuVal);
-		}
-	};
+  const handleFilterMenu = (selectedMenu) => {
+    setFilterMenu(selectedMenu);
+  };
 
-	const changeInputText = (changeText) => {
-		setText(changeText);
-	};
-
-	useEffect(() => {}, [menu]);
-
-	const handleSubmit = () => {
-		if (text !== '') {
-			const id = createUUID();
-			const db = JSON.parse(localStorage.getItem('memos'));
-			localStorage.setItem('memos', JSON.stringify([...db, { menu, text, id }]));
-			setText('');
-			setMemos([...memos, { menu, text, id }]);
-			setMenu(menu);
-			setFilterMenu(filterMenu);
-		}
-	};
-
-	useEffect(() => {
-		console.log(`filterMenu: ${filterMenu}`);
-	}, [filterMenu]);
-
-	const handleFilterMenu = (selectedMenu) => {
-		setFilterMenu(selectedMenu);
-	};
-
-	return (
-		<div className="App">
-			<div className="page">
-				<Habit habits={habits} />
-				<FilterMenu handleFilterMenu={handleFilterMenu} />
-				<Memo filter={filterMenu} memos={memos} deleteMemo={deleteMemo} editMemo={editMemo} />
-				<Input
-					text={text}
-					menu={menu}
-					handleSubmit={handleSubmit}
-					handleInputMenu={handleInputMenu}
-					changeInputText={changeInputText}
-				/>
-			</div>
-		</div>
-	);
+  return (
+    <div className="App">
+      <div className="page">
+        <Habit habits={getHabits()} />
+        <FilterMenu handleFilterMenu={handleFilterMenu} />
+        <Memo
+          filter={filterMenu}
+          memos={memos}
+          deleteMemo={deleteMemo}
+          editMemo={editMemo}
+        />
+        <Input
+          text={text}
+          menu={menu}
+          handleSubmit={handleSubmit}
+          handleInputMenu={handleInputMenu}
+          changeInputText={changeInputText}
+        />
+      </div>
+    </div>
+  );
 }
