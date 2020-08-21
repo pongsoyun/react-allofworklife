@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useCircularList } from './../hooks/useCircularList';
+import { useInterval } from './../hooks/useInterval';
 
 export default function Habit({ habits }) {
 	const [habit, before, next] = useCircularList(habits);
 
-	useEffect(() => {
-		// * react Hooks에서 setInterval처럼 기능하게끔 하기
-		const timer = setTimeout(() => {
-			next();
-		}, 5000);
-		return () => clearTimeout(timer);
-	}, [habit]);
+	useInterval(next, 5000);
 
 	return (
 		<header className="habit">
