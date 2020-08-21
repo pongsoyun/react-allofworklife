@@ -42,17 +42,18 @@ export default function App() {
 	};
 
 	// * Input
+	const [currentMenu, setCurrentMenu] = useState(WORK_MENU);
 	const [menu, setMenu] = useState(WORK_MENU);
 	const [text, setText] = useState('');
 
-	const handleInputMenu = (menuVal) => {
-		if (menuVal !== undefined) {
-			setMenu(menuVal);
+	const handleInputMenu = (inputMenu) => {
+		if (inputMenu) {
+			setMenu(inputMenu);
 		}
 	};
 
-	const changeInputText = (changeText) => {
-		setText(changeText);
+	const changeInputText = (inputText) => {
+		setText(inputText);
 	};
 
 	const handleSubmit = () => {
