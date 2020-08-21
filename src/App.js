@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import FilterMenu from './components/FilterMenu.jsx';
 import Habit from './components/Habit.jsx';
 import Memo from './components/Memo.jsx';
@@ -12,7 +12,7 @@ export default function App() {
 		key: MEMOS_KEY,
 		defaultState: [],
 	});
-	const getHabits = useCallback(() => memos.filter(({ menu }) => menu === HABIT_MENU), [memos]);
+	const habits = useMemo(() => memos.filter(({ menu }) => menu === HABIT_MENU), [memos]);
 
 	const [filterMenu, setFilterMenu] = useState(ALL_MENU);
 
@@ -58,7 +58,7 @@ export default function App() {
 	return (
 		<div className="App">
 			<div className="page">
-				<Habit habits={getHabits()} />
+				<Habit habits={habits} />
 				<FilterMenu handleFilterMenu={handleFilterMenu} />
 				<Memo filter={filterMenu} memos={memos} deleteMemo={deleteMemo} editMemo={editMemo} />
 				<Input
