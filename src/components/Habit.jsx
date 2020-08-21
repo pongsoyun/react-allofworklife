@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useCircularList } from './../hooks/useCircularList';
 import { useInterval } from './../hooks/useInterval';
 
+const ArrowButton = ({ direction, clickHandler }) => (
+	<button className={`habit__${direction}__btn`} onClick={clickHandler}>
+		<i className={`fa fa-chevron-${direction}`} aria-hidden="true"></i>
+	</button>
+);
 export default function Habit({ habits }) {
 	const [habit, before, next] = useCircularList(habits);
-
 	useInterval(next, 5000);
 
 	return (
@@ -12,13 +16,10 @@ export default function Habit({ habits }) {
 			<div className="habit__div">
 				<span className="habbit__text">{habit?.text || '이곳에 습관 텍스트가 나옵니다.'}</span>
 			</div>
+
 			<div className="habit__btn__container">
-				<button className="habit__prev__btn" onClick={before}>
-					<i className="fa fa-chevron-left" aria-hidden="true"></i>
-				</button>
-				<button className="habit__next__btn" onClick={next}>
-					<i className="fa fa-chevron-right" aria-hidden="true"></i>
-				</button>
+				<ArrowButton direction="left" clickHandler={before} />
+				<ArrowButton direction="right" clickHandler={next} />
 			</div>
 		</header>
 	);
