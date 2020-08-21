@@ -5,7 +5,6 @@ export function useLocalStorage({ key, defaultState }) {
 
 	useEffect(() => {
 		const localStorageResult = localStorage.getItem(key);
-
 		if (localStorageResult) {
 			setItem(JSON.parse(localStorageResult));
 		}
