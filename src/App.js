@@ -63,7 +63,7 @@ export default function App() {
 				<Memo filter={filterMenu} memos={memos} deleteMemo={deleteMemo} editMemo={editMemo} />
 				<Input
 					text={text}
-					menu={currentMenu}
+					currentMenu={currentMenu}
 					handleSubmit={handleSubmit}
 					handleInputMenu={handleInputMenu}
 					changeInputText={changeInputText}
