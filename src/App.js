@@ -37,18 +37,17 @@ export default function App() {
 	const editMemo = (selectedMemo, selectedMenu) => {
 		deleteMemo(selectedMemo.id);
 		setText(selectedMemo.innerText);
-		setMenu(selectedMenu);
+		setCurrentMenu(selectedMenu);
 		// handleInputMenu(menu);
 	};
 
 	// * Input
 	const [currentMenu, setCurrentMenu] = useState(WORK_MENU);
-	const [menu, setMenu] = useState(WORK_MENU);
 	const [text, setText] = useState('');
 
 	const handleInputMenu = (inputMenu) => {
 		if (inputMenu) {
-			setMenu(inputMenu);
+			setCurrentMenu(inputMenu);
 		}
 	};
 
@@ -59,7 +58,7 @@ export default function App() {
 	const handleSubmit = () => {
 		if (text !== '') {
 			const id = createUUID();
-			setMemos((prevMemos) => [...prevMemos, { menu, text, id }]);
+			setMemos((prevMemos) => [...prevMemos, { currentMenu, text, id }]);
 			setText('');
 		}
 	};
@@ -76,7 +75,7 @@ export default function App() {
 				<Memo filter={filterMenu} memos={memos} deleteMemo={deleteMemo} editMemo={editMemo} />
 				<Input
 					text={text}
-					menu={menu}
+					menu={currentMenu}
 					handleSubmit={handleSubmit}
 					handleInputMenu={handleInputMenu}
 					changeInputText={changeInputText}
