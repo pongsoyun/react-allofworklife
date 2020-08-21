@@ -22,7 +22,7 @@ export default function Memo({ filter, memos, deleteMemo, editMemo }) {
 	}
 
 	return (
-		<main class="memos__container">
+		<main className="memos__container">
 			{memos.map((memo) => {
 				if (memo.menu === filter || filter === 'all') return createMemoForm(memo);
 			})}
