@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Habit({ habits }) {
-	useEffect(() => {
-		console.log('get habits');
-		console.log(habits);
-	}, [habits]);
-	const [habit, setHabit] = useState(habits.length === 0 ? '이곳에 습관 텍스트가 나옵니다.' : habits[0].text);
 	const [habitIndex, setHabitIndex] = useState(0);
 
 	useEffect(() => {
-		// console.log(habit);
 		// if (habitIndex < 0) setHabitIndex(habits.length - 1);
 		window.setTimeout(() => plusHabitIndex, 1000);
-		// console.log(habitIndex);
 		// if (habits.length !== 0) setHabit(habits[habitIndex].text);
 
 		// * react Hooks에서 setInterval처럼 기능하게끔 하기
@@ -33,7 +26,7 @@ export default function Habit({ habits }) {
 	return (
 		<header className="habit">
 			<div className="habit__div">
-				<span className="habbit__text">{habit}</span>
+				<span className="habbit__text">{habits[habitIndex]?.text || '이곳에 습관 텍스트가 나옵니다.'}</span>
 			</div>
 			<div className="habit__btn__container">
 				<button className="habit__prev__btn" onClick={minusHabitIndex}>
