@@ -12,6 +12,7 @@ export default function FilterMenu({ handleFilterMenu }) {
 	// }, [menu]);
 
 	return (
+		// MENUS.map(menu => <li className={menu}>{toPascal(menu)}</li>)
 		<nav className="menus-container">
 			<ul className="menus" onClick={(e) => handleFilterMenu(e.target.className)}>
 				<li className="all">All</li>

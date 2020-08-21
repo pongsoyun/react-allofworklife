@@ -39,11 +39,11 @@ export default function App() {
 
 	// * editMemo
 	const editMemo = (memo, menu) => {
-		const text = memo.innerText;
+		const memoInnerText = memo.innerText;
 		const id = memo.id;
 
 		deleteMemo(id);
-		setText(text);
+		setText(memoInnerText);
 		setMenu(menu);
 		console.log(`${menu}     ${text}\t${id}`);
 		// handleInputMenu(menu);
