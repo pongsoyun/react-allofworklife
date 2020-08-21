@@ -5,25 +5,13 @@ import Memo from './components/Memo.jsx';
 import Input from './components/Input.jsx';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { createUUID } from './utils/createUUID';
-import {
-	MEMOS_KEY,
-	WORK_MENU,
-	LIFE_MENU,
-	HOBBY_MENU,
-	WISH_MENU,
-	HEALTH_MENU,
-	HABIT_MENU,
-	ALL_MENU,
-} from './constants/menus';
+import { MEMOS_KEY, WORK_MENU, HABIT_MENU, ALL_MENU } from './constants/menus';
 import './App.css';
-
 export default function App() {
 	const [memos, setMemos] = useLocalStorage({
 		key: MEMOS_KEY,
 		defaultState: [],
 	});
-	const MENUS = [WORK_MENU, LIFE_MENU, HOBBY_MENU, WISH_MENU, HEALTH_MENU, HABIT_MENU];
-
 	const getHabits = useCallback(() => memos.filter(({ menu }) => menu === HABIT_MENU), [memos]);
 
 	const [filterMenu, setFilterMenu] = useState(ALL_MENU);
@@ -58,7 +46,7 @@ export default function App() {
 	const handleSubmit = () => {
 		if (text !== '') {
 			const id = createUUID();
-			setMemos((prevMemos) => [...prevMemos, { currentMenu, text, id }]);
+			setMemos((prevMemos) => [...prevMemos, { menu: currentMenu, text, id }]);
 			setText('');
 		}
 	};
